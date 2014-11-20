@@ -1,12 +1,6 @@
 @import 'bootstrap';
 
-.user-info {
-   margin-top: 9px;
- }
- 
- .nav {
-   margin-top: 5px;
- }
+
  
 /*
   ========================================
@@ -14,7 +8,6 @@
   ========================================
 */
 body {
-  // color: #888;
   // background: #293f50;
   font: 300 16px/22px "Ubuntu", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
@@ -25,12 +18,8 @@ body {
   font-weight: 300;
   letter-spacing: .5px;
   line-height: 44px;
-  // padding: 40px 0 22px 0;
+  padding: 0px 22px;
   text-transform: uppercase;
-}
-
-h1, h3, h4, h5, p {
-  margin-bottom: 22px;
 }
 
 .contain,
@@ -39,7 +28,7 @@ h1, h3, h4, h5, p {
   width: 960px;
   // border: 2px solid #949599;
 }
-.contain {
+.contain {  
   padding-left: 30px;
   padding-right: 30px;
 }
@@ -87,8 +76,8 @@ h1, h3, h4, h5, p {
 */
 
 .hero {
-  // color: #fff;
-  // line-height: 44px;
+  background: #D8D8D8;
+  line-height: 44px;
   padding: 22px 80px 66px 80px;
   text-align: center;
 }

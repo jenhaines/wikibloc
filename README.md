@@ -1,28 +1,19 @@
-== README
+## wikibloc
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+A simple wiki program.
 
-Things you may want to cover:
+Allows users to:
 
-* Ruby version
+* Sign up of a free account
 
-* System dependencies
+* With a paid account, the ability to delegate edit rights to other users
 
-* Configuration
+* With a paid account, the ability to make entries private
 
-* Database creation
+* Compatible with markdown
 
-* Database initialization
+* Gives previews to entries in markdown
 
-* How to run the test suite
+*still a work in progress*
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+**more on the way**
