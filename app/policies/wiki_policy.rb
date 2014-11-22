@@ -2,10 +2,10 @@ class WikiPolicy < ApplicationPolicy
 
   class Scope < Scope
     def resolve
-      if user.nil? || 
+      if user && (user.role == 'admin' )
         scope.all
       else
-        scope.where private: false
+        scope.where private: nil
       end
     end
   end
