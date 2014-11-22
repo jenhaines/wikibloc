@@ -1,7 +1,8 @@
 class WikisController < ApplicationController
   def index
-    @wikis = Wiki.where.not(private: true)
-    authorize @wikis
+    @wikis = policy_scope(Wiki)
+    @user = current_user
+    # @wikis = @user.wikis
   end
 
   def show
@@ -14,7 +15,7 @@ class WikisController < ApplicationController
   end
 
   def create
-    @wiki = Wiki.new(params.require(:wiki).permit(:title, :body))
+    @wiki = Wiki.new(wiki_params)
     authorize @wiki
     if @wiki.save
       flash[:notice] = "Post was saved."
@@ -31,7 +32,7 @@ class WikisController < ApplicationController
 
  def update
    @wiki = Wiki.find(params[:id])
-   if @wiki.update_attributes(params.require(:wiki).permit(:title, :body))
+   if @wiki.update_attributes(wiki_params)
      flash[:notice] = "Post was updated."
      redirect_to @wiki
    else
@@ -52,4 +53,10 @@ class WikisController < ApplicationController
       render :show
     end
   end
+
+  private
+
+   def wiki_params
+     params.require(:wiki).permit(:title, :body, :private)
+   end
 end
