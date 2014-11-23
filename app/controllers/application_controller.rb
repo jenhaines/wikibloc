@@ -7,18 +7,6 @@ class ApplicationController < ActionController::Base
   	redirect_to root_url, alert: exception.message
   end
 
-  class Amount 
-
-    def default=(pennies)
-      @pennies = pennies
-    end
-
-    def default
-      @pennies * 100
-    end
-  end
-
-   
 protected
    
      def configure_permitted_parameters

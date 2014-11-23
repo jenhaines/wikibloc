@@ -1,15 +1,12 @@
 class ChargesController < ApplicationController
 
-  class Amount
 
-    def initialize(money)
-      @money = money
-    end
+class Amount
 
-    def default
-      @money * 100   
-    end
+  def self.default
+    1000
   end
+end
 
   def create
  
@@ -37,8 +34,8 @@ class ChargesController < ApplicationController
  rescue Stripe::CardError => e
    flash[:error] = e.message
    redirect_to new_charge_path
- end
 
+ end
   def new
     @stripe_btn_data = {
       key: "#{ Rails.configuration.stripe[:publishable_key] }",
