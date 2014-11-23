@@ -71,3 +71,6 @@ gem 'figaro', '1.0'
 # Authorization
 gem 'pundit'
 
+# Payment
+gem 'stripe'
+

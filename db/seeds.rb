@@ -30,7 +30,7 @@ admin.save
      user:   users.sample,
      title:  Faker::Lorem.sentence,
      body:   Faker::Lorem.paragraph,
-     # private: [true, false].sample
+     hide: [true, false].sample
    )
  end
  wikis = Wiki.all

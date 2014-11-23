@@ -5,7 +5,7 @@ class WikiPolicy < ApplicationPolicy
       if user && (user.role == 'admin' )
         scope.all
       else
-        scope.where private: nil
+        scope.where hide: false
       end
     end
   end
