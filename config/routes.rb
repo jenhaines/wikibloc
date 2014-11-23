@@ -8,5 +8,6 @@ Rails.application.routes.draw do
   get 'about' => 'welcome#about'
 
   root to: 'welcome#index'
+  resources :charges, only: [:new, :create]
 
 end

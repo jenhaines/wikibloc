@@ -6,6 +6,18 @@ class ApplicationController < ActionController::Base
   rescue_from Pundit::NotAuthorizedError do | exception |
   	redirect_to root_url, alert: exception.message
   end
+
+  class Amount 
+
+    def default=(pennies)
+      @pennies = pennies
+    end
+
+    def default
+      @pennies * 100
+    end
+  end
+
    
 protected
    
