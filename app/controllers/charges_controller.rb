@@ -4,7 +4,7 @@ class ChargesController < ApplicationController
 class Amount
 
   def self.default
-    1000
+    1500
   end
 end
 
@@ -26,7 +26,7 @@ end
    )
  
    flash[:success] = "Thanks for all the money, #{current_user.email}! Feel free to pay me again."
-   redirect_to user_path(current_user) # or wherever
+   redirect_to root_path # or wherever
  
  # Stripe will send back CardErrors, with friendly messages
  # when something goes wrong.
