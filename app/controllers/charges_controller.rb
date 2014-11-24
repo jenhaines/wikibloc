@@ -26,7 +26,7 @@ end
    )
  
    flash[:success] = "Thanks for all the money, #{current_user.email}! Feel free to pay me again."
-   redirect_to root_path # or wherever
+   redirect_to root_pathπ # or wherever
  
  # Stripe will send back CardErrors, with friendly messages
  # when something goes wrong.
