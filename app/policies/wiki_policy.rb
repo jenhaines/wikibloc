@@ -11,8 +11,13 @@ class WikiPolicy < ApplicationPolicy
   end
 
   def update?
-    user.admin? or not wiki.private?
+    user.admin? or not wiki.hide?
   end
+
+  def edit
+    raise Pundit::NotAuthorizedError, "must be logged in" unless user
+  end
+
 
 	# def index?
 	# 	true
