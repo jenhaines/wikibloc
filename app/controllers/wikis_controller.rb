@@ -6,7 +6,9 @@ class WikisController < ApplicationController
   end
 
   def show
+    @user = current_user
     @wiki = Wiki.find(params[:id])
+    authorize @wiki
   end
 
   def new
@@ -44,6 +46,7 @@ class WikisController < ApplicationController
 
   def destroy
     @wiki = Wiki.find(params[:id])
+    authorize @wiki
     title = @wiki.title
 
     if @wiki.destroy

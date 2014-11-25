@@ -1,5 +1,6 @@
 class WikiPolicy < ApplicationPolicy
 
+
   class Scope < Scope
     def resolve
       if user && (user.role == 'admin' )
@@ -11,16 +12,11 @@ class WikiPolicy < ApplicationPolicy
   end
 
   def update?
-    user.admin? or not wiki.hide?
+    user.admin? or not record.hide?
   end
 
   def edit
-    raise Pundit::NotAuthorizedError, "must be logged in" unless user
+    
   end
-
-
-	# def index?
-	# 	true
-	# end
 
 end
