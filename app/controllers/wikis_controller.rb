@@ -1,12 +1,10 @@
 class WikisController < ApplicationController
   def index
     @wikis = policy_scope(Wiki)
-    
-    # @wikis = Wiki.where hide: false 
   end
 
   def show
-    @user = current_user
+    # @user = current_user
     @wiki = Wiki.find(params[:id])
     authorize @wiki
   end
