@@ -14,7 +14,7 @@ Allows users to:
 
 * Gives previews to entries in markdown
 
-[Visit Wikibloc](wikibloc.herokuapp.com)
+[Visit Wikibloc](https://wikibloc.herokuapp.com/)
 
 *still a work in progress*
 
