@@ -3,6 +3,13 @@ class ChargesController < ApplicationController
   def new
   end
 
+  def update
+    @user = User.find_by :name => current_user.name
+    @user.role = "standard"
+    @user.roledate = Time.now
+    @user.save!
+  end
+
 
   def create
     @user = User.find_by :name => current_user.name
@@ -21,6 +28,7 @@ class ChargesController < ApplicationController
     :currency    => 'usd'
     )
     @user.role = "premium"
+    @user.roledate = Time.now
     @user.save!
     
 
