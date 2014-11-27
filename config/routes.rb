@@ -5,9 +5,12 @@ Rails.application.routes.draw do
   devise_for :users
   get 'welcome/index'
 
+  match 'charges/cancel' => 'charges#cancel', :via => :post
+
+
   get 'about' => 'welcome#about'
 
   root to: 'welcome#index'
-  resources :charges, only: [:new, :create, :update]
+  resources :charges, only: [:new, :create]
 
 end

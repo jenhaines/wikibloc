@@ -3,7 +3,7 @@ class WikiPolicy < ApplicationPolicy
 
   class Scope < Scope
     def resolve
-      if user && user.admin?
+      if user.present? && user.admin?
         scope.all
       else
         scope.where hide: false
@@ -12,11 +12,11 @@ class WikiPolicy < ApplicationPolicy
   end
 
   def update?
-    user && user.admin?
+    user.present?
   end
 
   def show?
-    (user && user.admin?) or not record.hide?
+    (user.present? && user.admin?) or not record.hide?
   end
 
   def edit

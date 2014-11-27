@@ -3,11 +3,20 @@ class ChargesController < ApplicationController
   def new
   end
 
-  def update
+  def cancel
     @user = User.find_by :name => current_user.name
     @user.role = "standard"
     @user.roledate = Time.now
-    @user.save!
+    if @user.save
+      flash[:notice] = "We're sorry you had to leave..Membership canceled."
+      redirect_to edit_user_registration_path
+    else
+      flash[:error] = "There was an error with your transaction, please contact customer service."
+    end
+  end
+
+  def update
+    
   end
 
 
@@ -29,19 +38,14 @@ class ChargesController < ApplicationController
     )
     @user.role = "premium"
     @user.roledate = Time.now
-    @user.save!
-    
-
-    redirect_to edit_user_registration_path
-    flash[:notice] = "Congratulations, you are a Premium Member!"
-
-
-    # redirect_to root_path # or wherever
+    if @user.save
+      flash[:notice] = "Congratulations, you are a Premium Member!"
+      redirect_to edit_user_registration_path
+    else
+      flash[:error] = "There was an error with your transaction, please contact customer service."
+    end
 
 rescue Stripe::CardError => e
     flash[:error] = e.message
-    
-
-
   end
 end
