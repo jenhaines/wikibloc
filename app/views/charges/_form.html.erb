@@ -1,0 +1,8 @@
+<%= form_tag charges_path do %>
+  <center><h3>Why not sign up for a Premium Membership?
+    </br>Only $15</h3></center>
+  <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+          data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+          data-description="Premium Subscription"
+          data-amount= 1500></script>
+<% end %>
