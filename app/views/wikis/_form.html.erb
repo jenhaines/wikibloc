@@ -1,0 +1,18 @@
+<%= form_tag("/wikis/editors/", :method => "post") do %>
+    <table class="table table-striped">
+      <tr>
+      <td><b>Name</b></td>
+      <td><b>Email</b></td>
+      <td align="center"><b>Add</b></td>
+      </tr>
+      <% @users.each do |t| %>
+        <div class="line-items">
+          <tr>
+          <td><%= t.name %></td>
+          <td><%= t.email %></td>
+          <td align="center"><%= f.checkbox  %></td>
+          </tr>
+        </div>
+      <% end %>
+    </table>
+    <% end %>
