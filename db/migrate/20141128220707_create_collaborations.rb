@@ -1,6 +1,6 @@
-class CreateEditors < ActiveRecord::Migration
+class CreateCollaborations < ActiveRecord::Migration
   def change
-    create_table :editors do |t|
+    create_table :collaborations do |t|
       t.references :user, index: true
       t.references :wiki, index: true
 

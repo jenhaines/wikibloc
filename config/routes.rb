@@ -14,7 +14,7 @@ Rails.application.routes.draw do
   root to: 'welcome#index'
 
   resources :wikis do
-    resources :editors
+    resources :collaborations
   end
 
 end

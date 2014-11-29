@@ -1,4 +1,4 @@
-class EditorsController < ApplicationController
+class CollaborationsController < ApplicationController
 
   def create
     @users = User.all

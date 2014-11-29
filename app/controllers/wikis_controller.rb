@@ -34,6 +34,7 @@ class WikisController < ApplicationController
 
  def update
    @wiki = Wiki.find(params[:id])
+   @wiki.collaborators = params[:wiki][:user_ids]
    if @wiki.update_attributes(wiki_params)
      flash[:notice] = "Post was updated."
      redirect_to @wiki
