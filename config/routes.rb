@@ -15,7 +15,6 @@ Rails.application.routes.draw do
 
   resources :wikis do
     resources :editors
-    # post '/editor' => 'votes#up_vote', as: :up_vote
   end
 
 end

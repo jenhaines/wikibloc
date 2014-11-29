@@ -6,7 +6,8 @@ require 'faker'
      name:     Faker::Name.name,
      email:    Faker::Internet.email,
      password: "helloworld",
-     role: ['standard', 'premium'].sample
+     role: ['standard', 'premium'].sample,
+     roledate: Time.now
      # password: Faker::Lorem.characters(10)
    )
    user.skip_confirmation!
