@@ -1,11 +1,12 @@
 require 'faker'
  
  # Create Users
- 5.times do
+ 15.times do
    user = User.new(
      name:     Faker::Name.name,
      email:    Faker::Internet.email,
      password: "helloworld",
+     role: ['standard', 'premium'].sample
      # password: Faker::Lorem.characters(10)
    )
    user.skip_confirmation!
@@ -25,7 +26,7 @@ admin.save
 
 
  # Create Wiki posts
- 20.times do
+ 30.times do
    Wiki.create!(
      user:   users.sample,
      title:  Faker::Lorem.sentence,

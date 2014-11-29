@@ -1,18 +1,4 @@
-<%= form_tag("/wikis/editors/", :method => "post") do %>
-    <table class="table table-striped">
-      <tr>
-      <td><b>Name</b></td>
-      <td><b>Email</b></td>
-      <td align="center"><b>Add</b></td>
-      </tr>
-      <% @users.each do |t| %>
-        <div class="line-items">
-          <tr>
-          <td><%= t.name %></td>
-          <td><%= t.email %></td>
-          <td align="center"><%= f.checkbox  %></td>
-          </tr>
-        </div>
-      <% end %>
-    </table>
-    <% end %>
+<%= form_tag("/wikis/#{@wiki.id}/editor/") do %>
+  <%= select_tag "editselect", options_from_collection_for_select(@users, "id", "name"), multiple: true, class: "form-control" %>
+  <%= submit_tag("Set Editors", class: "btn btn-primary")%>
+<% end %>

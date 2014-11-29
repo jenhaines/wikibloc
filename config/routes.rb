@@ -1,8 +1,9 @@
 Rails.application.routes.draw do
 
-  resources :wikis
-
   devise_for :users
+
+  resources :charges, only: [:new, :create]
+
   get 'welcome/index'
 
   match 'charges/cancel' => 'charges#cancel', :via => :post
@@ -11,6 +12,10 @@ Rails.application.routes.draw do
   get 'about' => 'welcome#about'
 
   root to: 'welcome#index'
-  resources :charges, only: [:new, :create]
+
+  resources :wikis do
+    resources :editors
+    # post '/editor' => 'votes#up_vote', as: :up_vote
+  end
 
 end
