@@ -33,10 +33,21 @@ admin.save
      title:  Faker::Lorem.sentence,
      body:   Faker::Lorem.paragraph,
      hide: [true, false].sample
-   )
+   ) 
  end
+
  wikis = Wiki.all
  
+ #Create Collaborations
+ wikis.each do |w|
+  if w.hide?
+    c = rand(1..5)
+    c.times { w.users << users.sample}
+    w.save!
+  end
+end
+
+
  
  puts "Seed finished"
  puts "#{users.count} users created"

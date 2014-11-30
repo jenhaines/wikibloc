@@ -27,6 +27,7 @@ class WikisController < ApplicationController
   end
 
   def edit
+    @user = current_user
     @users = User.all
      @wiki = Wiki.find(params[:id])
      authorize @wiki

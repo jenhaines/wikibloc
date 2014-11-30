@@ -7,8 +7,6 @@ class CollaborationsController < ApplicationController
     if params.has_key?(:editselect)
       params[:editselect].each do |i|
         u = User.find_by_id(i)
-    pry
-
         join = Wiki.editors.u.new
         join.save
       end
@@ -16,6 +14,11 @@ class CollaborationsController < ApplicationController
       flash[:error] = 'Please select an editor'
       redirect_to edit_wiki_path  
     end  
+  end
+
+  def index
+    @wiki = Wiki.find(params[:wiki_id])
+    @collaborations = @wiki.users
   end
 
   def complete

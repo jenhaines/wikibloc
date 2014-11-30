@@ -19,6 +19,10 @@ class WikiPolicy < ApplicationPolicy
     (user.present? && user.admin?) or not record.hide?
   end
 
+  def premium?
+    user.admin? or user.premium?
+  end
+
   def edit
     
   end
