@@ -1,4 +1,17 @@
+<div class="col-md-10">
 <h1><%= @wikis.count %> WIKIS</h1>
+<table class="table">
+<tr>
+  <td><b>Title</b></td>
+  <td><b>Id</b></td>
+  <td><b>Collaborate</b></td>
+</tr>
 <% @wikis.each do |wiki| %>
-  <p><%= link_to wiki.title, wiki_path(wiki) %></p>
+<tr><td><%= link_to wiki.title, wiki_path(wiki) %></td>
+    <td><%= wiki.id %></td>
+    <td><%= "yes" if wiki.users.include?(current_user.id) %></td>
+    </tr>
+
 <% end %>
+</table>
+</div>

@@ -5,6 +5,8 @@ class WikiPolicy < ApplicationPolicy
     def resolve
       if user.present? && user.admin?
         scope.all
+      elsif user.premium?
+        scope.users.include?(user)
       else
         scope.where hide: false
       end
