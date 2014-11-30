@@ -6,7 +6,7 @@ class WikiPolicy < ApplicationPolicy
       if user.present? && user.admin?
         scope.all
       elsif user.premium?
-        scope.users.include?(user)
+        scope.where( :user_id => user.collaborations.select(:wiki_id))
       else
         scope.where hide: false
       end

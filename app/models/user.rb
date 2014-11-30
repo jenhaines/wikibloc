@@ -3,9 +3,10 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable, :confirmable
   has_many :wikis
   has_many :collaborations 
-  has_many :cowikis, through: :collaborations, source: :wikis
+  has_many :cowikis, through: :collaborations, source: :wiki
 
   after_initialize :init
+
 
   def admin?
     role == 'admin'

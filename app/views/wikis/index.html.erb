@@ -9,7 +9,7 @@
 <% @wikis.each do |wiki| %>
 <tr><td><%= link_to wiki.title, wiki_path(wiki) %></td>
     <td><%= wiki.id %></td>
-    <td><%= "yes" if wiki.users.include?(current_user.id) %></td>
+    <td><%= "yes" if wiki.users.include?(current_user) %></td>
     </tr>
 
 <% end %>
