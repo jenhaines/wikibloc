@@ -1,8 +1,7 @@
 class WikisController < ApplicationController
   def index
-    scope1 = Wiki.visible_to(current_user)
-    scope2 = current_user.cowikis
-    @wikis = (scope2 + scope1)
+   @wikis = policy_scope(Wiki)
+  
 
     # authorize @wikis
   end
@@ -39,6 +38,7 @@ class WikisController < ApplicationController
 
  def update
    @wiki = Wiki.find(params[:id])
+   authorize @wiki
    @wiki.collaborators = params[:wiki][:user_ids]
    if @wiki.update_attributes(wiki_params)
      flash[:notice] = "Post was updated."

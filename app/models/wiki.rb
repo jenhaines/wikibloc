@@ -3,12 +3,9 @@ class Wiki < ActiveRecord::Base
   has_many :collaborations, dependent: :destroy
   has_many :users, through: :collaborations
 
+  scope :visible_to, -> { user ? all : publicly_viewable}
   scope :publicly_viewable, -> { where(hide: false) }
   scope :privately_viewable,  -> { where(hide: true) }
-
-  def self.visible_to(user)
-      user ? all : publicly_viewable
-  end
   
   def self.can_edit(user)
     user.cowikis
