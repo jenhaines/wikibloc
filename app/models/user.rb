@@ -8,6 +8,7 @@ class User < ActiveRecord::Base
   after_initialize :init
 
 
+
   def admin?
     role == 'admin'
   end

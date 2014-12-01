@@ -4,11 +4,13 @@
 <tr>
   <td><b>Title</b></td>
   <td><b>Id</b></td>
+  <td><b>Public</b></td>
   <td><b>Collaborate</b></td>
 </tr>
 <% @wikis.each do |wiki| %>
 <tr><td><%= link_to wiki.title, wiki_path(wiki) %></td>
     <td><%= wiki.id %></td>
+    <td><%= "yes" unless wiki.hide %></td>
     <td><%= "yes" if wiki.users.include?(current_user) %></td>
     </tr>
 

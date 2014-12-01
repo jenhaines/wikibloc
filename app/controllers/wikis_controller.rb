@@ -1,6 +1,9 @@
 class WikisController < ApplicationController
   def index
-    @wikis = policy_scope(Wiki.includes(:user).all)
+    scope1 = Wiki.visible_to(current_user)
+    scope2 = current_user.cowikis
+    @wikis = (scope2 + scope1)
+
     # authorize @wikis
   end
 
