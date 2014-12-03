@@ -1,13 +1,11 @@
 class WikisController < ApplicationController
   def index
-   @wikis = policy_scope(Wiki)
-  
 
-    # authorize @wikis
+    @wikis = policy_scope(Wiki)
+
   end
 
   def show
-    # @user = current_user
     @wiki = Wiki.find(params[:id])
     authorize @wiki
   end
@@ -30,13 +28,13 @@ class WikisController < ApplicationController
   end
 
   def edit
-    @user = current_user
-    @users = User.all
+     @user = current_user
      @wiki = Wiki.find(params[:id])
      authorize @wiki
   end
 
  def update
+   @user = current_user
    @wiki = Wiki.find(params[:id])
    authorize @wiki
    @wiki.collaborators = params[:wiki][:user_ids]

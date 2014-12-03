@@ -6,4 +6,8 @@
 <% end %>
 <p><%= @wiki.body %></p>
 </br>
-<h2><p><%= "PRIVATE" if @wiki.hide %></p></h2>
+<p><% if @wiki.hide? %>
+    <span class="glyphicon glyphicon-lock"></span>
+<% end %>
+<i>Created by: <%= @wiki.user.name %></i></p>
+

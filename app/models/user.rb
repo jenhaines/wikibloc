@@ -1,4 +1,4 @@
-has haraclass User < ActiveRecord::Base
+class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :confirmable
   has_many :wikis
@@ -6,8 +6,6 @@ has haraclass User < ActiveRecord::Base
   has_many :cowikis, through: :collaborations, source: :wiki
 
   after_initialize :init
-
-
 
   def admin?
     role == 'admin'

@@ -7,9 +7,11 @@
             <%= f.label :body %>
             <%= f.text_area :body, rows: 8, class: 'form-control', placeholder: "Enter wiki body" %>
             <%= f.submit "Save", class: 'btn btn-success' %>
+            </br>
+            <p><i>Created by: <%= @wiki.user.name %></i></p>
   </div>
       <div class="col-md-6">
-        <% if @user.admin? || @user.premium? %>
+        <% if policy(@wiki).premium? %>
           <%= f.label "private:" %>
           <%= f.check_box(:hide) %>
           <%= link_to "Collaboration", wiki_collaborations_path(@wiki), class: "btn btn-warning" %>

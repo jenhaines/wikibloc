@@ -3,13 +3,10 @@ class Wiki < ActiveRecord::Base
   has_many :collaborations, dependent: :destroy
   has_many :users, through: :collaborations
 
-  scope :visible_to, -> { user ? all : publicly_viewable}
-  scope :publicly_viewable, -> { where(hide: false) }
-  scope :privately_viewable,  -> { where(hide: true) }
-  
-  def self.can_edit(user)
-    user.cowikis
+  def self.my_wikis(user)
+    joins(:collaborations).where("collaborations.user_id = :collaborator_id", { collaborator_id: user.id})
   end
+
 
   def owner
     user
