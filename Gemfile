@@ -73,3 +73,6 @@ gem 'pundit'
 # Payment
 gem 'stripe'
 
+#Markdown
+gem 'redcarpet'
+

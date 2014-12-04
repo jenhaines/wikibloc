@@ -8,12 +8,11 @@ Rails.application.routes.draw do
 
   match 'charges/cancel' => 'charges#cancel', :via => :post
 
-
   get 'about' => 'welcome#about'
 
   root to: 'welcome#index'
 
-  resources :wikis do
+  resources :wikis, shallow: true do
     resources :collaborations
   end
 

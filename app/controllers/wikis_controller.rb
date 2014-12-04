@@ -1,13 +1,23 @@
 class WikisController < ApplicationController
   def index
+    @user = current_user
 
-    @wikis = policy_scope(Wiki)
+    if params.has_key?(:select)
+      @mywikis = policy_scope(@user.wikis)
+    else
+      @wikis = policy_scope(Wiki)
+    end
 
   end
 
   def show
     @wiki = Wiki.find(params[:id])
     authorize @wiki
+  end
+
+  def mywikis
+    @wikis = current_user.wikis
+
   end
 
   def new
@@ -37,12 +47,11 @@ class WikisController < ApplicationController
    @user = current_user
    @wiki = Wiki.find(params[:id])
    authorize @wiki
-   @wiki.collaborators = params[:wiki][:user_ids]
    if @wiki.update_attributes(wiki_params)
-     flash[:notice] = "Post was updated."
-     redirect_to @wiki
+     flash[:notice] = "Wiki was updated."
+     render :edit
    else
-     flash[:error] = "There was an error saving the post. Please try again."
+     flash[:error] = "There was an error saving the wiki. Please try again."
      render :edit
    end
  end

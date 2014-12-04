@@ -31,7 +31,7 @@ admin.save
    Wiki.create!(
      user:   users.sample,
      title:  Faker::Lorem.sentence,
-     body:   Faker::Lorem.paragraph,
+     body:   Faker::Lorem.paragraphs(rand(2..7)).join("\n\n"),
      hide: [true, false].sample
    ) 
  end
