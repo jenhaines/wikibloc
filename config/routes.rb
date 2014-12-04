@@ -16,4 +16,6 @@ Rails.application.routes.draw do
     resources :collaborations
   end
 
+  put 'wikis/:id/privatize', to: 'wikis#privatize', as: 'privatize'
+
 end

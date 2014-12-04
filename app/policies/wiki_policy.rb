@@ -32,5 +32,11 @@ class WikiPolicy < ApplicationPolicy
     (user && user.role == 'admin') || (user && record.hide == false) || (user && record.users.pluck(:id).include?(user.id)) || record.user == user 
   end
 
+  def privatize?
+    (user && user.role == 'admin') || (user && record.hide == false) || (user && record.users.pluck(:id).include?(user.id)) || record.user == user 
+  end
+
+
+
 end
 

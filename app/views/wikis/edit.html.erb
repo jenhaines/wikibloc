@@ -1,28 +1,24 @@
-<h2>Edit Wiki</h2>
+</br>
+<div class="row">
+  <div class="col-md-10">
+      <b><%= link_to "Collaborate", wiki_collaborations_path(@wiki), class: "btn btn-warning" %></b>
+  </div>
 <div class="row">
   <div class="col-md-6">
     <%= form_for @wiki do |f| %>
-            <%= f.label :title %>
-            <%= f.text_field :title, class: 'form-control', placeholder: "Enter wiki title" %>
-            <%= f.label :body %>
-            <%= f.text_area :body, rows: 20, class: 'form-control', placeholder: "Enter wiki body" %>
-            </br>
-            <%= f.submit "Save", class: 'btn btn-success' %>
-            </br>
-            <p><i>Created by: <%= @wiki.user.name %></i></p>
-  </div>
-      <div class="col-md-6">
-        <% if policy(@wiki).premium? %>
-          <%= f.label "private:" %>
-          <%= f.check_box(:hide) %>
-          <%= link_to "Collaboration", wiki_collaborations_path(@wiki), class: "btn btn-warning" %>
-        <% end %>
+      <%= f.label :title %>
+      <%= f.text_field :title, class: 'form-control', placeholder: "Enter wiki title" %>
+      <%= f.label :body %>
+      <%= f.text_area :body, rows: 20, class: 'form-control', placeholder: "Enter wiki body" %>
+      </br>
+      <%= f.submit "Save", class: 'btn btn-primary' %>
+      </br>
+      <p><i>Created by: <%= @wiki.user.name %></i></p>
     <% end %>
-
   </div>
   <div class="col-md-6">
-  <p>Title</p>
     <p><%= markdown @wiki.title %></p>
     </br>
     <%= markdown @wiki.body %>
+  </div>
 </div>

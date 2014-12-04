@@ -2,12 +2,24 @@ class WikisController < ApplicationController
   def index
     @user = current_user
 
-    if params.has_key?(:select)
+    if params[:select]
       @mywikis = policy_scope(@user.wikis)
     else
       @wikis = policy_scope(Wiki)
     end
 
+  end
+
+  def privatize
+    @wiki = Wiki.find(params[:id])
+    authorize @wiki
+    @wiki.hide ? @wiki.hide = false : @wiki.hide = true
+    if @wiki.save
+      redirect_to @wiki
+    else
+      flash[:error] = "There was an error saving the wiki. Please try again."
+      redirect_to @wiki
+    end
   end
 
   def show
@@ -48,7 +60,7 @@ class WikisController < ApplicationController
    @wiki = Wiki.find(params[:id])
    authorize @wiki
    if @wiki.update_attributes(wiki_params)
-     flash[:notice] = "Wiki was updated."
+     # flash[:notice] = "Wiki was updated."
      render :edit
    else
      flash[:error] = "There was an error saving the wiki. Please try again."
