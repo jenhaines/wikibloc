@@ -1,12 +1,16 @@
 class WikisController < ApplicationController
   def index
-    @user = current_user
-    if params[:select]=="collab"
-      @wikis = policy_scope(@user.cowikis)
-    elsif params[:select]=="all"      
-      @wikis = policy_scope(Wiki)
+    if current_user.present?
+      @user = current_user
+      if params[:select]=="collab"
+        @wikis = policy_scope(@user.cowikis)
+      elsif params[:select]=="all"      
+        @wikis = policy_scope(Wiki)
+      else
+        @wikis = policy_scope(@user.wikis)
+      end
     else
-      @wikis = policy_scope(@user.wikis)
+      @wikis = policy_scope(Wiki)
     end
 
   end
@@ -33,11 +37,6 @@ class WikisController < ApplicationController
     @users = @wiki.users
   end
 
-  def mywikis
-    @wikis = current_user.wikis
-
-  end
-
   def new
     @wiki = Wiki.new
     authorize @wiki
@@ -59,6 +58,7 @@ class WikisController < ApplicationController
      @user = current_user
      @wiki = Wiki.find(params[:id])
      authorize @wiki
+     @users= @wiki.users
   end
 
  def update

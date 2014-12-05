@@ -1,3 +1,47 @@
-<h1>COLLABORATORS WILL GO HERE</h1>
+<div class="row">
+  <div class="col-md-10">
+  MEMBERS
+  </div>
+  </div>
 
-<%= render @wiki.users %>
+  <div class="row">
+    <div class='col-md-4'>
+      <table class="table">
+      <tr>
+      <td><b>Name</b></td>
+      <td><b>Id</b></td>
+      <td><b>email</b></td>
+      </tr>
+      <%= form_tag("/collaborations/update/", method: :post) do %>
+      <% @users.each do |u| %>
+      <td><%= u.name %></td>
+      <td><%= u.id %></td>
+      <td><%= u.email %></td>
+      </tr>
+      <% end %>
+      <% end %>
+      </table>
+      </div>
+      <div class="col-md-2">
+      NAVIGATION HERE
+    </div>
+    <div class="col-md-6">
+      <table class="table">
+        <tr>
+        <td><b>Name</b></td>
+        <td><b>Id</b></td>
+        <td><b>email</b></td>
+        <td><b>Member</b></td>
+        </tr>
+        <%= form_tag("/collaborations/update/", method: :post) do %>
+          <% @userlist.each do |us| %>
+            <td><%= us.name %></td>
+            <td><%= us.id %></td>
+            <td><%= us.email %></td>
+            <td align="center"><%= check_box_tag  "todos_checkbox[]",us.id %></td>
+            </tr>
+          <% end %>
+        <% end %>
+      </table>
+  </div>
+</div>

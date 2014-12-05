@@ -17,8 +17,10 @@ class CollaborationsController < ApplicationController
   end
 
   def index
+    @user = current_user
     @wiki = Wiki.find(params[:wiki_id])
-    @collaborations = @wiki.users
+    @users = @wiki.users
+    @userlist = User.all - @users
   end
 
   def complete

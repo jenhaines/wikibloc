@@ -22,7 +22,7 @@
          <td><%= wiki.id %></td>
          <td><%= wiki.owner.name %></td>
          <td><%= "yes" unless wiki.hide? %></td>
-         <td><%= "yes" if wiki.users.count > 0 %></td>
+         <td><%= "yes" unless wiki.users.empty? %></td>
          </tr>
    
      <% end %>

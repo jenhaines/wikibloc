@@ -27,7 +27,7 @@
 <% end %>
 <i>Created by: <%= @wiki.user.name %></i>
 </p>
-<%= render partial: 'collaborations/show' if @wiki.users.count > 0 %>
+<%= render partial: 'collaborations/show' unless @wiki.users.empty? %>
 </div>
 </div>
 </div>
