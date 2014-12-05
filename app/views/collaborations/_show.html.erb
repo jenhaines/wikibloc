@@ -1,0 +1,16 @@
+  <div class='col-md-8'>
+  <h3>Collaborators</h3>
+  <table class="table">
+       <tr>
+         <td><b>Name</b></td>
+         <td><b>Id</b></td>
+         <td><b>email</b></td>
+       </tr>
+       <% @users.each do |u| %>
+           <td><%= u.name %></td>
+           <td><%= u.id %></td>
+           <td><%= u.email %></td>
+           </tr>
+       <% end %>
+       </table>
+       </div>

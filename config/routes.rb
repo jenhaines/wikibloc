@@ -12,10 +12,10 @@ Rails.application.routes.draw do
 
   root to: 'welcome#index'
 
-  resources :wikis, shallow: true do
-    resources :collaborations
-  end
+  resources :wikis
 
   put 'wikis/:id/privatize', to: 'wikis#privatize', as: 'privatize'
+
+  get 'wikis/:id/collaborations', to: 'wikis#collaborations', as: 'collaborate'
 
 end

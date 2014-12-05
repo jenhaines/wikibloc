@@ -25,8 +25,9 @@
 <p><% if @wiki.hide? %>
     <span class="glyphicon glyphicon-eye-close"></span>
 <% end %>
-
 <i>Created by: <%= @wiki.user.name %></i>
 </p>
+<%= render partial: 'collaborations/show' if @wiki.users.count > 0 %>
+</div>
 </div>
 </div>

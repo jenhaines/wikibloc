@@ -1,4 +1,0 @@
-<%= form_tag("/wikis/#{@wiki.id}/editors/") do %> --use form helper
-  <%= select_tag "editselect", options_from_collection_for_select(@users, "id", "name"), multiple: true, class: "form-control" %>
-  <%= submit_tag("Set Editors", class: "btn btn-primary")%>
-<% end %>

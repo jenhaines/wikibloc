@@ -1,11 +1,12 @@
 class WikisController < ApplicationController
   def index
     @user = current_user
-
-    if params[:select]
-      @mywikis = policy_scope(@user.wikis)
-    else
+    if params[:select]=="collab"
+      @wikis = policy_scope(@user.cowikis)
+    elsif params[:select]=="all"      
       @wikis = policy_scope(Wiki)
+    else
+      @wikis = policy_scope(@user.wikis)
     end
 
   end
@@ -22,9 +23,14 @@ class WikisController < ApplicationController
     end
   end
 
+  def collaborations
+
+  end
+
   def show
     @wiki = Wiki.find(params[:id])
     authorize @wiki
+    @users = @wiki.users
   end
 
   def mywikis
