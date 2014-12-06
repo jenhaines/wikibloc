@@ -17,5 +17,6 @@ Rails.application.routes.draw do
    end
 
   put 'wikis/:id/privatize', to: 'wikis#privatize', as: 'privatize'
-
+  post 'wikis/:wiki_id/collaborators/change', to: 'collaborations#change', as: 'change_collaborators'
+  
 end

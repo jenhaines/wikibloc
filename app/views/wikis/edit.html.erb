@@ -18,6 +18,14 @@
     </br>
     <%= markdown @wiki.body %>
   </div>
-  <%= render partial: 'collaborations/show' unless @wiki.users.empty? %>
 </div>
+  <div class="row">
+  <div class="col-md-4">
+  </div>
+  <div class="col-md-4">
+  <%= render partial: 'collaborations/show' unless @wiki.users.empty? %>
+  </div>
+  <div class="col-md-4">
+  </div>
+  </div>
 

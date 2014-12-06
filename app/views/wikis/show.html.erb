@@ -1,6 +1,6 @@
 </br>
 <div class="row">
-<div class="col-md-10">
+<div class="col-md-12">
  <% if @wiki.hide? %> 
     <%= link_to privatize_path(@wiki), class: 'btn btn-primary', method: :put  do %>
       <span class="glyphicon glyphicon-eye-close"></span>
@@ -27,7 +27,5 @@
 <% end %>
 <i>Created by: <%= @wiki.user.name %></i>
 </p>
-<%= render partial: 'collaborations/show' unless @wiki.users.empty? %>
-</div>
 </div>
 </div>
