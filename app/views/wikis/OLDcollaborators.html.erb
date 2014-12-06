@@ -21,13 +21,12 @@
             <td align="center"><%= check_box_tag  "collaborate[]",us.id, true ? @users.include?(us) : false %></td>
           </tr>
         <% end %>
-         <%= submit_tag("Update", class: "btn btn-primary") %>
-      <% end %>
     </table>
   </div>
   <div class="col-md-4">
   </br>
- 
+  <%= submit_tag("Update", class: "btn btn-primary") %>
+      <% end %>
 
   </div>
 </div>

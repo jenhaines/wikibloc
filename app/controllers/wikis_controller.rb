@@ -27,8 +27,21 @@ class WikisController < ApplicationController
     end
   end
 
-  def collaborations
-
+  def update_collaborators
+    @wiki = Wiki.find(params[:id])
+    @users = @wiki.users
+    @uids = @users.pluck(:id)
+    if params.has_key?(:collaborate)
+      params[:collaborate].each do | idstr |
+        uid = idstr.to_i
+        pry
+        # @collaborator = User.find(uid)
+        unless @uids.include?(uid)
+          new_collaboration = @wiki.collaborations.build(user_id: uid)
+          new_collaboration.save
+        end
+      end
+    end
   end
 
   def show

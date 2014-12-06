@@ -3,10 +3,6 @@ class Wiki < ActiveRecord::Base
   has_many :collaborations, dependent: :destroy
   has_many :users, through: :collaborations
 
-  def self.my_wikis(user)
-    joins(:collaborations).where("collaborations.user_id = :collaborator_id", { collaborator_id: user.id})
-  end
-
 
   def owner
     user
