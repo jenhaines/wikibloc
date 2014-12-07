@@ -2,10 +2,12 @@
     <table class="table">
          <tr>
            <td><b>Name</b></td>
+           <td><b>Id</b></td>
            <td><b>email</b></td>
          </tr>
-         <% @users.each do |u| %>
+         <% users.each do |u| %>
              <td><%= u.name %></td>
+             <td><%= u.id %></td>
              <td><%= u.email %></td>
              </tr>
          <% end %>
