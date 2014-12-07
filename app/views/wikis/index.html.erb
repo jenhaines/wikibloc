@@ -1,14 +1,11 @@
 <div class="row">
   <h1><%= @wikis.count %> WIKIS</h1>
    <div class="col-md-12">
-      <ul class="nav nav-pills">
-        <div class="tab-content">
-          <li role="presentation"><%= link_to "My Wikis", wikis_path, class: "active", action: "index" %></li>
-          <li role="presentation"><%= link_to "All Wikis", wikis_path(select: :all), action: "index" %></li>
-          <li role="presentation"><%= link_to "Collaborations", wikis_path(select: :colab), action: "index" %></li>
-        </div>
+      <ul class="nav nav-tabs">
+          <li role="presentation"><%= link_to "All Wikis", wikis_path, action: "index" %></li>
+          <li role="presentation"><%= link_to "My Wikis", wikis_path(select: :mine), class: "active", action: "index" %></li>
+          <li role="presentation"><%= link_to "Collaborations", wikis_path(select: :collab), action: "index" %></li>
       </ul>
-
      <table class="table">
      <tr>
        <td><b>Title</b></td>
@@ -27,6 +24,5 @@
    
      <% end %>
      </table>
-   </div>
-
+    </div>
    </div>

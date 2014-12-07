@@ -1,0 +1,26 @@
+<div class="row">
+<div class="col-md-12">
+  <h2><%= @wiki.title %> Collaborators</h2>
+</div>
+</div>
+<%= form_for(@wiki) do |f| %>
+<div class="row">
+  <div class="col-md-2">
+    </div>
+  <div class="col-md-8">
+        <table class="table table-hover">
+          <tr>
+            <td>?</td>
+            <td>Id</td>
+          </tr>
+              <tr>
+            <% @users.each do |us| %>
+                <td><%= check_box_tag "user[cowiki_ids][]", @wiki.id, us.cowiki_ids.include?(@wiki.id), id: dom_id(us) %></td>
+                <td><%= label_tag dom_id(us), us.name %></td>
+              </tr>
+            <% end %>
+        </table>
+             <%= f.submit %>
+          <% end %>
+      </div>
+    </div>

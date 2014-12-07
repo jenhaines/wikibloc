@@ -13,7 +13,7 @@
       <h3 class="logo"><%= link_to "wikibloc" , root_path %></h3>
             <p>one wiki to rule them all...</p>
             <ul class="nav nav-tabs">
-              <li><%= link_to "Wikibloc", wikis_path %></li>
+              <li><%= link_to "Wikibloc", wikis_path if current_user%></li>
               <li><%= link_to "About", about_path %></li>
               <div class="pull-right user-info">
                 <% if current_user %>

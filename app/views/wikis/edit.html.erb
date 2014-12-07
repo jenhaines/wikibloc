@@ -8,7 +8,7 @@
       <%= f.text_area :body, rows: 20, class: 'form-control', placeholder: "Enter wiki body" %>
       </br>
       <%= f.submit "Save", class: 'btn btn-primary' %>
-      <b><%= link_to "Collaborate", wiki_collaborations_path(@wiki), class: "btn btn-warning" %></b>
+      <b><%= link_to "Collaborate", update_collaborators_path(@wiki), class: "btn btn-warning" %></b>
       </br>
       <p><i>Created by: <%= @wiki.user.name %></i></p>
     <% end %>
