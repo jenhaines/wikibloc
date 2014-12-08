@@ -10,11 +10,13 @@
   <body>
     <div class="container">
       <div class="row">
-      <h3 class="logo"><%= link_to "wikibloc" , root_path %></h3>
-            <p>one wiki to rule them all...</p>
-            <ul class="nav nav-tabs">
-              <li><%= link_to "Wikibloc", wikis_path if current_user%></li>
-              <li><%= link_to "About", about_path %></li>
+      <div class="page-header">
+      <h1><%= link_to "wikibloc" , root_path %> <small>one wiki to rule them all...</small></h1>
+      </div>
+            <ul class="nav nav-pills">
+                <li role="presentation"><%= link_to "All Wikis", wikis_path(select: :all), action: "index" %></li>
+                <li role="presentation"><%= link_to "My Wikis", wikis_path, action: "index" %></li>
+              <li role="presentation"><%= link_to "About", about_path %></li>
               <div class="pull-right user-info">
                 <% if current_user %>
                   Hello <%= link_to current_user.name, edit_user_registration_path %>!

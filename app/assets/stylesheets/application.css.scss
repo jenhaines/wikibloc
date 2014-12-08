@@ -5,9 +5,25 @@
  }
  
  .nav {
-   margin-top: 5px;
+   margin: 5px;
  }
 
+ .page-header {
+    
+ }
+
+ body {
+    font-family: 'Ubuntu', sans-serif;
+    // background-color: #b2b2b2;
+    background-image: url("swirl_pattern.png");
+    // background-color: #0099FF;
+    // background-color: rgba(0, 153, 255, .3);
+  }
+  
+  .row {
+    background: #FFF;
+    padding: 5px;
+  }
  // .btn {
  //    margin: 5px;
  //  }

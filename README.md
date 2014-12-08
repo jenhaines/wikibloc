@@ -14,8 +14,7 @@ Allows users to:
 
 * Gives previews to entries in markdown
 
+* Secure credit card transactions with [Stripe](http://www.stripe.com)
+
 [Visit Wikibloc](https://wikibloc.herokuapp.com/)
 
-*still a work in progress*
-
-**more on the way**
