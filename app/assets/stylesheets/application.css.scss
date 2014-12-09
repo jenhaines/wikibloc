@@ -1,5 +1,9 @@
 @import 'bootstrap';
 
+h1 {
+  color: #428bca
+}
+
 .user-info {
    margin-top: 9px;
  }
@@ -23,6 +27,10 @@
   .row {
     background: #FFF;
     padding: 5px;
+  }
+
+  .content-row {
+    margin-top: 40px;
   }
 
   .glyphicon-eye-open,

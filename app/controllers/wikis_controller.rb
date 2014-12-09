@@ -39,7 +39,9 @@ class WikisController < ApplicationController
   end
 
   def create
+    @user = current_user
     @wiki = Wiki.new(wiki_params)
+    
     authorize @wiki
     if @wiki.save
       flash[:notice] = "Post was saved."
@@ -88,6 +90,6 @@ class WikisController < ApplicationController
   private
 
    def wiki_params
-     params.require(:wiki).permit(:title, :body, :hide, :user_ids => [])
+     params.require(:wiki).permit(:title, :body, :hide, :user_id, :user_ids => [])
    end
 end
