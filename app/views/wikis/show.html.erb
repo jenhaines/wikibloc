@@ -1,22 +1,30 @@
 </br>
 <div class="row">
-  <div class="col-md-12">
+  <div class="col-md-10">
     <h1><%= markdown @wiki.title %></h1>
+    </div>
+    <div class="col-md-2">
     </br>
+            <% if @wiki.hide? %> 
+                    <span class="glyphicon glyphicon-eye-close"></span>
+                <% else %>
+                    <span class="glyphicon glyphicon-eye-open"></span>
+                <% end %>
+                </div>
+<div class="row">
+<div class="col-md-12">                
     <p><%= markdown @wiki.body %></p>
     </br>
     <% if policy(@wiki).update? %>
       <%= link_to "Edit", edit_wiki_path(@wiki), class: 'btn btn-success' %>
       <% if @wiki.owner == current_user %>
         <% if @wiki.hide? %> 
-              <%= link_to privatize_path(@wiki), class: 'btn btn-warning', method: :put  do %>
-                <span class="glyphicon glyphicon-eye-close"></span>
-                make public
+              <%= link_to privatize_path(@wiki), class: 'btn btn-primary', method: :put  do %>
+                Private
               <% end %>
             <% else %>
-              <%= link_to privatize_path(@wiki), class: 'btn btn-primary', method: :put  do %>
-                <span class="glyphicon glyphicon-eye-open"></span>
-                make private
+              <%= link_to privatize_path(@wiki), class: 'btn btn-success', method: :put  do %>
+                Public
               <% end %>
             <% end %>
             <% end %>
@@ -27,4 +35,5 @@
     <i>Created by: <%= @wiki.user.name %></i>
     </p>
   </div>
+</div>
 </div>
