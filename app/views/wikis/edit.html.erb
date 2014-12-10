@@ -1,4 +1,4 @@
-<div class="row content-row">
+<div class="row">
   <div class="col-md-6">
     <%= form_for @wiki do |f| %>
       <%= f.label :title %>
@@ -6,8 +6,11 @@
       <%= f.label :body %>
       <%= f.text_area :body, rows: 20, class: 'form-control', placeholder: "Enter wiki body" %>
       </br>
+      <% if policy(@wiki).premium? %>
+      <p>private:  <%= f.check_box :hide %></p>
+      <%= link_to "Share", update_users_path(@wiki), class: "btn btn-warning" %>
+      <% end %>
       <%= f.submit "Save", class: 'btn btn-primary' %>
-      <%= link_to "Share", update_users_path(@wiki), class: "btn btn-warning" if policy(@wiki).premium? %>
       </br>
       <p><i>Created by: <%= @wiki.user.name %></i></p>
     <% end %>

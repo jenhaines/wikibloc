@@ -1,4 +1,4 @@
-<div class="row content-row">
+<div class="row">
   <div class="col-md-10">
     <h1><%= markdown @wiki.title %></h1>
   </div>
@@ -6,9 +6,10 @@
     </br>
     <% if current_user.premium? %>
       <% if @wiki.hide? %> 
-        <span class="glyphicon glyphicon-eye-close"></span>
+        <span class="glyphicon glyphicon-eye-close">  Private</span>
       <% else %>
-        <span class="glyphicon glyphicon-eye-open"></span>
+        <span class="glyphicon glyphicon-eye-open">  Public</span>
+
       <% end %>
     <% end %>
   </div>
@@ -18,17 +19,6 @@
       </br>
       <% if policy(@wiki).update? %>
         <%= link_to "Edit", edit_wiki_path(@wiki), class: 'btn btn-success' %>
-        <% if current_user.premium? && @wiki.user == current_user %>
-          <% if @wiki.hide? %> 
-            <%= link_to privatize_path(@wiki), class: 'btn btn-primary', method: :put  do %>
-              Private
-            <% end %>
-          <% else %>
-            <%= link_to privatize_path(@wiki), class: 'btn btn-success', method: :put  do %>
-              Public
-            <% end %>
-          <% end %>
-        <% end %>
         <%= link_to "Delete Wiki", @wiki, method: :delete, class: 'btn btn-danger', data: { confirm: 'Are you sure you want to delete this Wiki?' } %>
       <% end %>
       <p>

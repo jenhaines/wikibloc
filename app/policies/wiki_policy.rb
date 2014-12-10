@@ -6,7 +6,7 @@ class WikiPolicy < ApplicationPolicy
   end
 
   def premium?
-    user.role == "premium" && record.user == user && record.hide?
+    (user.role == "premium" && record.user == user) || user.role == "admin"
   end
 
   def show?

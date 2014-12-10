@@ -10,19 +10,18 @@
   <body>
     <div class="container">
       <div class="row">
-      <div class="page-header">
-      <h1><%= link_to "wikibloc" , root_path %> <small>one wiki to rule them all...</small></h1>
-      </div>
-            <ul class="nav nav-pills">
-            <% if current_user%>
-                            <li role="presentation"><%= link_to "All Wikis", wikis_path(select: :all), action: "index" %></li>
-                            <li role="presentation"><%= link_to "My Wikis", wikis_path, action: "index" %></li>
-                            <li role="presentation"><%= link_to "New Wiki", new_wiki_path, action: "new" %></li>
-                <% end %>
-              <li role="presentation"><%= link_to "About", about_path %></li>
+        <h1><%= link_to "wikibloc" , root_path %> <small>one wiki to rule them all...</small></h1>
+            <ul class="nav nav-tabs">
+              <li><%= link_to "About", about_path %></li>
+              <li><%= link_to "Home", root_path %></li>
+              <% if current_user.present? %>
+                <li><%= link_to "All Wikis", wikis_path %></li>
+                <li><%= link_to "My Wikis", wikis_path(select: "mywikis") %></li>
+                <li><%= link_to "New Wiki", new_wiki_path %></li>
+              <% end %>
               <div class="pull-right user-info">
-                <% if current_user %>
-                  Hello <%= link_to current_user.name, edit_user_registration_path %>!
+                <% if current_user.present? %>
+                  Hello <%= link_to current_user.name, edit_user_registration_path %>!&nbsp
                   <%= link_to "Log Out", destroy_user_session_path, method: :delete %>
                 <% else %>
                   <%= link_to "Sign In", new_user_session_path %> or
@@ -44,9 +43,9 @@
               <div class="alert alert-warning">
                 <button type="button" class="close" data-dismiss="alert">&times;</button>
                 <%= flash[:alert] %>
-            </div>
+              </div>
             <% end %>
-            </div>
+              </div>
 
       <%= yield %>
     </div>

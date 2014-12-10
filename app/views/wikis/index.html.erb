@@ -1,20 +1,27 @@
-<div class="row content-row">
+<div class="row">
    <div class="col-md-12">
      <table class="table">
      <tr>
        <td><b>Title</b></td>
-       <td><b>Owner</b></td>
-       <td><b>Public</b></td>
+       <td><b>Private</b></td>
        <td><b>Collaborators</b></td>
      </tr>
-     <% @wikis.each do |wiki| %>
-     <tr><td><%= link_to wiki.title, wiki_path(wiki) %></td>
-         <td><%= wiki.owner.name %></td>
-         <td><%= "yes" unless wiki.hide? %></td>
-         <td><%= wiki.users.pluck(:name).join(', ') %></td>
-         </tr>
-   
-     <% end %>
+     <% unless @wikis.empty? %>
+       <% @wikis.each do |wiki| %>
+          <tr><td><%= link_to wiki.title, wiki_path(wiki) %></td>
+              <td><%= "yes" if wiki.hide? %></td>
+              <td><%= wiki.users.pluck(:name).join(', ') %></td>
+              </tr> 
+          <% end %>
+        <% else %>
+           <tr>
+           <td></td>
+             <td>
+               <h2>Sorry no Wikis for you</h2>
+             </td>
+             <td></td>
+           </tr>
+         <% end %>
      </table>
     </div>
    </div>

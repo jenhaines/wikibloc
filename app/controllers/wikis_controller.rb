@@ -1,13 +1,11 @@
 class WikisController < ApplicationController
   def index
     @user = current_user
-    if params[:select]=="collab"
-      @wikis = policy_scope(@user.cowikis)
-    elsif params[:select]=="all"
+    if params[:select]=="mywikis"
+      @wikis = policy_scope(@user.wikis)
+    else
       @wikis = policy_scope(Wiki)
       render 'list'
-    else
-      @wikis = policy_scope(@user.wikis)
     end
   end
 
@@ -39,9 +37,7 @@ class WikisController < ApplicationController
   end
 
   def create
-    @user = current_user
-    @wiki = Wiki.new(wiki_params)
-    
+    @wiki = current_user.wikis.build(wiki_params)
     authorize @wiki
     if @wiki.save
       flash[:notice] = "Post was saved."

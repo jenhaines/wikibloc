@@ -7,6 +7,14 @@ module ApplicationHelper
 		end
 	end
 
+  def form_tag_group(errors)
+    if errors.any?
+      'form-group has-error'
+    else
+      'form-group'
+    end
+  end
+
   def markdown(text)
     renderer = Redcarpet::Render::HTML.new
     extensions = {fenced_code_blocks: true}

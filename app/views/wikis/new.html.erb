@@ -1,25 +1,39 @@
 
-  <div class="row content-row">
+  <div class="row">
  <div class="col-md-12">
  <h1>New Wiki</h1>
  </div>
     <div class="col-md-4">
       <p>Guidelines for wikis</p>
       <ul>
-        <li>Make sure the it rhymes.</li>
-        <li>Don't use the letter "A".</li>
-        <li>The incessant use of hashtags will get you banned.</li>
+        <li>Google it First.</li>
+        <li>Please use Markdown.</li>
+        <li>Keep it Real..</li>
       </ul>
     </div>
     <div class="col-md-8">
+     <% if @wiki.errors.any? %>
+      <div class="alert alert-danger">
+        <h4>There are <%= pluralize(@wiki.errors.count, "error") %>.</h4>
+        <ul>
+          <% @wiki.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
       <%= form_for @wiki do |f| %>
         <div class="form-group">
+        <%= content_tag :div, class: form_tag_group(@wiki.errors[:title]) do %>
           <%= f.label :title %>
           <%= f.text_field :title, class: 'form-control', placeholder: "Enter wiki title" %>
+          <% end %>
         </div>
         <div class="form-group">
+        <%= content_tag :div, class: form_tag_group(@wiki.errors[:body]) do %>
           <%= f.label :body %>
           <%= f.text_area :body, rows: 8, class: 'form-control', placeholder: "Enter wiki body" %>
+          <% end %>
         </div>
         <div class="form-group">
           <%= f.submit "Save", class: 'btn btn-success' %>
