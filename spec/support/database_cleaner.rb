@@ -1,5 +1,4 @@
 RSpec.configure do |config|
- puts 'MADE IT HERE'
    # Empty the database before each test file
    config.before(:suite) do
      DatabaseCleaner.strategy = :truncation
