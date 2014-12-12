@@ -4,9 +4,13 @@ include SessionHelpers
 
 feature 'Create Private Wiki' do
 
+  before do
+    @user = create(:user)
+    @wiki = create(:wiki)
+  end
+
   scenario 'User Role is Standard' do
-    user = create(:user)
-    sign_in_with(user.email, user.password)
+    sign_in_with @user, 'standard'
     click_link 'New Wiki'
     fill_in 'Title', with: 'This is my Title'
     fill_in 'Body', with: 'This is the body of my wiki. wahoo!'
