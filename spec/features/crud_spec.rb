@@ -2,16 +2,16 @@ require 'rails_helper'
 
 include SessionHelpers
 
-feature 'User CRUD functions' do
+feature 'Standard user can' do
 
   before do 
     @user = create(:user)
-    @wiki = create(:wiki)
+    @wiki = create(:wiki, user: @user)
   end
 
 
-  scenario 'Create wiki' do
-    sign_in_with @user , "standard"
+  scenario 'create wiki' do
+    sign_in(@user)
     click_link 'New Wiki'
     fill_in 'Title', with: 'This is my Title'
     fill_in 'Body', with: 'This is the body of my wiki. wahoo!'
@@ -19,9 +19,8 @@ feature 'User CRUD functions' do
     expect(page).to have_content('Post was saved')
   end
 
-  scenario 'Update' do
-    sign_in_with @user , "standard"
-    # visit wikis_path
+  scenario 'update wiki' do
+    sign_in(@user)
     click_link 'Wiki Title'
     click_link 'Edit'
     fill_in 'Title', with: 'Blah blah blah'
@@ -30,9 +29,8 @@ feature 'User CRUD functions' do
     expect(page).to have_content('Wiki was updated')
   end
 
-  scenario 'Delete' do
-    sign_in_with @user, 'standard'
-    # visit wikis_path
+  scenario 'delete wiki' do
+    sign_in(@user)
     click_link 'Wiki Title'
     click_link 'Delete Wiki'
     expect(page).to have_content('deleted successfully')
