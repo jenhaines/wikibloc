@@ -5,6 +5,8 @@ class User < ActiveRecord::Base
   has_many :collaborations 
   has_many :cowikis, through: :collaborations, source: :wiki
 
+  validates :name, presence: true
+
   after_initialize :init
 
   def admin?
