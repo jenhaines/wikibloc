@@ -28,7 +28,7 @@
   <div class="col-md-4">
     <% if current_user.role == "premium" %>
       <h3><%= @user.roledate.strftime("Premium member since %B %d, %Y") %></h3>
-      <p><%= button_to "Cancel membership", charges_cancel_path, data: { confirm: "Are you sure?" } %></p>
+      <p><%= button_to "Cancel membership", charges_cancel_path, class: 'btn btn-primary', data: { confirm: "Are you sure?" } %></p>
     <% else %>
       <%= render partial: "charges/form" %>
     <% end %>

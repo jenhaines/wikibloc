@@ -23,7 +23,7 @@ feature 'Add Collaborators' do
     sign_in @suser
     click_link 'Another Wiki'
     click_link 'Edit'
-    expect(page).to have_no_link 'Share'
+    expect(page).to_not have_link 'Share'
   end
 
 
